@@ -1,1 +1,2 @@
-# kamen-papier-noznice
+# kamen-papier-noznice 
+jednoducha hra v bash-i :)
