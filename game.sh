@@ -14,6 +14,11 @@ EOF
 )
 
 #
+## score
+#
+COUNT=0
+
+#
 ## Interactive game
 #
 
@@ -23,6 +28,7 @@ do
 	COMP=$(echo $PLAYERCOMP | tr '[:space:]' '\n' | shuf -n 1 -)
 
 	echo "Zahraj sa hru, kamen, papier a noznice"
+	echo -e "Tvoje score: $COUNT"
 	echo -n "volba: "
 	read
 	echo
@@ -41,11 +47,15 @@ case $REPLY in
 			if [ $COMP == "noznice" ]
 			then
 				echo "vyhral si!"
+				let "COUNT++"
+				let "COUNT++"
 			else
 				echo "Prehral si!"
+				let "COUNT--"
 			fi
 		fi
 		;;
+
 	noznice)
                 
 		echo -e "Pocitac zvolil: $COMP\n"
@@ -58,12 +68,15 @@ case $REPLY in
 			if [ $COMP == "papier" ]
 			then
 				echo "vyhral si!"
+				let "COUNT++"
+				let "COUNT++"
 			else
 				echo "Prehral si!"
+				let "COUNT--"
 			fi
 		fi
-
 		;;
+
 	papier)
 		echo -e "Pocitac zvolil: $COMP\n"
 
@@ -75,11 +88,15 @@ case $REPLY in
 			if [ $COMP == "kamen" ]
 			then
 				echo "vyhral si!"
+				let "COUNT++"
+				let "COUNT++"
 			else
 				echo "Prehral si!"
+				let "COUNT--"
 			fi
 		fi
 		;;
+		
 	*)
 		echo
 		echo "Neplatny vstup $REPLY!"
